@@ -355,13 +355,13 @@ layui.define('layer' , function(exports){
         }
       break;
     }
-    
+      if(options.number && that.fileLength > options.number){
+        return that.msg('同时最多只能上传 '+ options.number + ' 个');
+      }
     //检验文件数量和大小
     if(options.size > 0 && !(device.ie && device.ie < 10)){
       var limitSize;
-      if(options.number && that.fileLength > options.number){
-        return that.msg('同时最多只能上传 '+ that.fileLength + ' 个');
-      }
+    
       layui.each(that.chooseFiles, function(index, file){
         if(file.size > 1024*options.size){
           var size = options.size/1024;
